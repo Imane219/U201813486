@@ -1,4 +1,4 @@
-// Example program
+// add del function
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -38,8 +38,8 @@ int insert_seqlist(SeqList *L, int i, datatype e)
 
     for (j=L->last; j>=i-1; --j)
     {
-        L->data[j+1] = L->data[j];//data[-1]ÊÇÊı×éÊ×µØÖ·ÔÙÍùÇ°Ò»¸öµ¥Î»£¨Êı×éÔªËØËùÕ¼µ¥Î»£¬¶ÔÓÚdataÊÇfloat£¬Ò²¾ÍÊÇ8×Ö½Ú£©
-        //µØÖ·Ëù´æµÄÔªËØµÄÖµ
+        L->data[j+1] = L->data[j];//data[-1]æ˜¯æ•°ç»„é¦–åœ°å€å†å¾€å‰ä¸€ä¸ªå•ä½ï¼ˆæ•°ç»„å…ƒç´ æ‰€å å•ä½ï¼Œå¯¹äºdataæ˜¯floatï¼Œä¹Ÿå°±æ˜¯8å­—èŠ‚ï¼‰
+        //åœ°å€æ‰€å­˜çš„å…ƒç´ çš„å€¼
     }
 
     L->data[i-1] = e;
@@ -52,12 +52,13 @@ void del_seqlist(SeqList *L,int i)
 {
     if (i<1 || i>L->last+2 )
     {
-        printf("wrong position\n");
+        printf("wrong position\n");//åˆ é™¤ä½ç½®é”™è¯¯
     }
     for(;i<=L->last;i++)
     {
         L->data[i-1] = L->data[i];
     }
+    L->last++;
 }
 
 void print_seqlist(SeqList *L)
