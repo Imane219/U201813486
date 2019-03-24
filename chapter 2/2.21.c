@@ -1,3 +1,9 @@
+/*就地逆置实现
+先创好一个链表而不是initialize+insert（在2.21updat）
+带头结点
+*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -62,16 +68,17 @@ Node * creat_link()//生成一个十个结点的单链表
 void inverse(Node* head)//就地逆置
 {
     Node* p = head->next->next;
-    Node *q = head ->next;
-    for(;p->next!=NULL;p = p->next)
+    Node *q = head ->next,*tmp;
+    for(;p;)
     {
+        tmp = p->next;
         p->next = head->next;
         head->next = p;
+        p=tmp;
     }
-    p->next = head->next;
-    head->next = p;
     q->next = NULL;
 }
+
 
 void print_linkdata(Node* head)
 {
