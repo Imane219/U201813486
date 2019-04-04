@@ -59,58 +59,51 @@ char gettop(pstack s)
 {
     char x;
     if(s->base == s->top)
-        x = NULL;
+        x = '0';
     else
-    {
         x = *(s->top-1);
-    }
     return x;
 }
 
 char compare(pstack s,char x)
 {
-    if(gettop(s) == NULL&&x>'z'&&x<'a')
-        return '>';
-    else if(x == '+'||x == '-')
-        return '<';
+    if(gettop(s) =='0'&&(x<'a'||x>'z'))
+        return '3';
+    /*else if(x == '+'||x == '-')
+        return '+';
     else if((x == '*'||x == '/')&&(gettop(s) == '+'||gettop(s) == '-'))
         return '>';
     else if((x == '*'||x == '/')&&(gettop(s) == '*'||gettop(s) == '/'))
         return '<';
-    else return NULL;
-
+    else return '0';
+*/
 }
 
 int main()
 {
-    char a[N] = {"faa"};
-    char b[N];
-    char *pb = b;
+    //char a[N] = {"-"};
+    //char b[N]= {0};
+    //char *pb = b;
     pstack s = initstack();
-    char *p = a;
+    //char *p = a;
 
-    for(;*p;p++,pb++)
+	char m = '*';
+	if(gettop(s) =='0'&&(m<'a'||m>'z'))
+		printf("%c",'=');
+    char x = compare(s,'*');
+    printf("%c",x);
+
+    /*for(;*p;p++)
     {
-        if(*p == '(')
-            push(s,*p);
-        else if(*p == ')')
+        switch(compare(s,*p))
         {
-            for(char *temp = s->top-1;*temp!='(';temp--,pb++)
-            {
-                pop(s,pb);
-            }
-            pb--;
-        }
-        else
-        {
-            switch(compare(s,*p))
-            {
-                case '>':  push(s,*p); break;
-                case '<':  pop(s,pb);break;
-                default :  *pb = *p;break;
-            }
+            case '>':  push(s,*p); break;
+            case '<':  pop(s,pb);pb++;p--;break;
+            default :  *pb = *p;pb++;break;
         }
     }
+
+    for(;s->top!=s->base;pb++)pop(s,pb);
     printf("%s",b);
-    return 0;
+    */return 0;
 }
